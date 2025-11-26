@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Data Stewardship Layer | Strategic Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #334155; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; height: 350px; margin: 0 auto; }
+        .transition-height { transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out; overflow: hidden; }
+        .btn-active { background-color: #3b82f6; color: white; border-color: #3b82f6; }
+        .btn-inactive { background-color: white; color: #64748b; border-color: #e2e8f0; }
+        .btn-inactive:hover { background-color: #f1f5f9; color: #334155; }
+        /* Custom scrollbar for data tables */
+        .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scroll::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 10px; }
+    </style>
+    <!-- Chosen Palette: Slate & Blue (Professional, Trust, Data) -->
+    <!-- Application Structure Plan: 
+         1. Hero Section: Sets the vision ("Garbage In, Garbage Out").
+         2. Interactive Trilogy (The 3 Agents): The core navigation. Users toggle between Architect, Guardian, and Strategist.
+            - Each section reveals specific deep-dive content and a unique visualization relevant to that agent's function.
+         3. The "Chat to Canvas" Evolution: A comparative section showing the strategic ask (Engineering/UX resources).
+         4. Impact & Validation: A summary of client feedback (Chanel, Bloomberg, etc.).
+         This structure transforms the linear memo into an explorable product suite tour.
+    -->
+    <!-- Visualization & Content Choices:
+         1. Guardian Agent: Bar Chart showing "Error Severity Breakdown" (P0-P2) to visualize the 'Audit' capability.
+         2. Strategist Agent: Radar Chart showing "Value Drivers" (ROI, Speed, Accuracy) based on selected goals.
+         3. Architect Agent: A CSS-based Process Flow diagram (No SVG) to visualize "Reverse Engineering".
+         4. Tables: HTML-based mockups of the proposed "Smart Grid" UI.
+         5. CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header / Nav -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">A</div>
+                <h1 class="text-xl font-bold text-slate-800 tracking-tight">Autonomous Data Stewardship Layer</h1>
+            </div>
+            <div class="text-sm font-medium text-slate-500 hidden sm:block">Product Strategy Proposal</div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="bg-slate-900 text-white py-16">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-900 text-blue-300 text-xs font-semibold tracking-wide uppercase mb-4 border border-blue-700">Strategic Initiative</span>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">From Passive Reporting to <span class="text-blue-400">Active Governance</span></h2>
+                <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                    Data quality is the #1 barrier to ROI for clients like Chanel and Bloomberg. 
+                    We propose a unified AI layer that doesn't just see data—it fixes, structures, and optimizes it.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left max-w-3xl mx-auto mt-12">
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <div class="text-blue-400 font-bold mb-1">1. Discover</div>
+                        <div class="text-sm text-slate-400">Reverse-engineer rules from chaos.</div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <div class="text-blue-400 font-bold mb-1">2. Audit</div>
+                        <div class="text-sm text-slate-400">Enforce compliance & fix errors.</div>
+                    </div>
+                    <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                        <div class="text-blue-400 font-bold mb-1">3. Optimize</div>
+                        <div class="text-sm text-slate-400">Drive growth via enrichment.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Three Pillars Interaction Section -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-slate-800 mb-2">The Three Pillars of Stewardship</h3>
+                <p class="text-slate-600">Explore the three functional agents that comprise the lifecycle solution. Click a card to view the feature deep-dive.</p>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <button onclick="switchTab('architect')" id="tab-architect" class="btn-inactive p-6 rounded-xl border text-left transition-all shadow-sm hover:shadow-md group">
+                    <div class="font-bold text-lg mb-2 group-hover:text-blue-600">1. The Schema Architect</div>
+                    <p class="text-sm opacity-80">Solving the "Cold Start" problem for disorganized data.</p>
+                </button>
+                <button onclick="switchTab('guardian')" id="tab-guardian" class="btn-active p-6 rounded-xl border text-left transition-all shadow-sm hover:shadow-md group">
+                    <div class="font-bold text-lg mb-2">2. The Compliance Guardian</div>
+                    <p class="text-sm opacity-90">Daily operational health checks and auto-correction.</p>
+                </button>
+                <button onclick="switchTab('strategist')" id="tab-strategist" class="btn-inactive p-6 rounded-xl border text-left transition-all shadow-sm hover:shadow-md group">
+                    <div class="font-bold text-lg mb-2 group-hover:text-blue-600">3. The Growth Strategist</div>
+                    <p class="text-sm opacity-80">Goal-driven data enrichment and ROI modeling.</p>
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden min-h-[500px]">
+                
+                <!-- Architect View -->
+                <div id="view-architect" class="hidden p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <span class="text-blue-600 font-bold tracking-wide text-sm uppercase">The "Cold Start" Solution</span>
+                            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">Reverse Engineering Structure</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                <strong>Problem:</strong> Onboarding is painful. SMBs and disorganized enterprises lack documentation for their naming conventions.
+                                <br><br>
+                                <strong>Solution:</strong> The Architect agent analyzes raw data strings without a rulebook, identifies patterns, and reconstructs the taxonomy rules automatically.
+                            </p>
+                            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+                                <h4 class="font-semibold text-slate-800 mb-2">Strategic Value</h4>
+                                <ul class="list-disc list-inside text-sm text-slate-600 space-y-2">
+                                    <li>Drastically lowers barrier to entry for new clients.</li>
+                                    <li>Automates the definition of "Data Standards".</li>
+                                    <li>Enables smaller customers to adopt enterprise-grade governance.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Architect Visualization: Process Flow -->
+                        <div class="flex flex-col justify-center">
+                            <h3 class="text-center font-semibold text-slate-500 mb-6">How it Works: From Chaos to Order</h3>
+                            <div class="space-y-4">
+                                <!-- Step 1 -->
+                                <div class="bg-red-50 border border-red-200 p-4 rounded-lg relative">
+                                    <div class="text-xs font-bold text-red-500 uppercase mb-1">Input: Raw Strings</div>
+                                    <code class="text-sm text-slate-700 block">"US_Google_Search_Q4_Brand"</code>
+                                    <code class="text-sm text-slate-700 block">"Summer24_FB_Retargeting"</code>
+                                    <div class="absolute bottom-[-18px] left-1/2 transform -translate-x-1/2 text-slate-300 text-xl">▼</div>
+                                </div>
+                                <!-- Step 2 -->
+                                <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg relative ml-8">
+                                    <div class="text-xs font-bold text-blue-500 uppercase mb-1">AI Analysis</div>
+                                    <p class="text-sm text-slate-700">Detecting delimiters (_), positions, and common values (Google, FB, Q4).</p>
+                                    <div class="absolute bottom-[-18px] left-1/2 transform -translate-x-1/2 text-slate-300 text-xl">▼</div>
+                                </div>
+                                <!-- Step 3 -->
+                                <div class="bg-green-50 border border-green-200 p-4 rounded-lg ml-16 shadow-sm">
+                                    <div class="text-xs font-bold text-green-600 uppercase mb-1">Output: Generated Taxonomy</div>
+                                    <div class="text-sm text-slate-800 font-mono bg-white p-2 rounded border border-green-100">
+                                        Field 1: Geo (US)<br>
+                                        Field 2: Platform (Google/FB)<br>
+                                        Field 3: Channel (Search)<br>
+                                        Rule: Delimiter = "_"
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Guardian View -->
+                <div id="view-guardian" class="block p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <span class="text-blue-600 font-bold tracking-wide text-sm uppercase">The "Trust" Engine</span>
+                            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">Automated Compliance Auditing</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                <strong>Problem:</strong> Human error in campaign naming destroys reporting accuracy. Clients like Telcel and Bloomberg cite this as a perennial challenge.
+                                <br><br>
+                                <strong>Solution:</strong> The Guardian agent ingests rules, scans data, categorizes errors (P0-P2), and <span class="bg-yellow-100 text-yellow-800 px-1 rounded">auto-generates fixes</span>.
+                            </p>
+                            
+                            <!-- Interactive Controls for Chart -->
+                            <div class="mb-4">
+                                <label class="text-sm font-semibold text-slate-700 block mb-2">Simulate Audit Impact:</label>
+                                <div class="flex gap-2">
+                                    <button onclick="updateGuardianChart('before')" class="px-3 py-1 text-sm bg-slate-200 rounded hover:bg-slate-300 transition">Pre-Audit State</button>
+                                    <button onclick="updateGuardianChart('after')" class="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 transition">Post-AI Fix</button>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container border rounded-lg p-2 bg-slate-50">
+                                <canvas id="guardianChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Guardian Visualization: Mock UI -->
+                        <div class="flex flex-col">
+                            <h3 class="font-bold text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-green-500"></span> 
+                                Proposed "Smart Grid" Interface
+                            </h3>
+                            <div class="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden flex-grow flex flex-col">
+                                <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 text-xs font-bold text-slate-500 flex justify-between">
+                                    <span>Detected Violations (3)</span>
+                                    <span>Action Required</span>
+                                </div>
+                                <div class="p-0 overflow-x-auto custom-scroll">
+                                    <table class="w-full text-sm text-left">
+                                        <thead class="bg-slate-50 text-slate-500">
+                                            <tr>
+                                                <th class="px-4 py-2 font-medium">Original String</th>
+                                                <th class="px-4 py-2 font-medium">Severity</th>
+                                                <th class="px-4 py-2 font-medium">AI Suggested Fix</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-100">
+                                            <tr class="hover:bg-slate-50">
+                                                <td class="px-4 py-3 text-red-600 font-mono text-xs">US_Ggl_Search_Brand</td>
+                                                <td class="px-4 py-3"><span class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold">P0</span></td>
+                                                <td class="px-4 py-3">
+                                                    <div class="font-mono text-xs text-green-700">US_Google_Search_Brand</div>
+                                                    <div class="text-[10px] text-slate-400 mt-1">Reason: "Ggl" is not allowed.</div>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-slate-50">
+                                                <td class="px-4 py-3 text-orange-600 font-mono text-xs">UK_FB_Summer2024</td>
+                                                <td class="px-4 py-3"><span class="bg-orange-100 text-orange-700 px-2 py-0.5 rounded text-xs font-bold">P1</span></td>
+                                                <td class="px-4 py-3">
+                                                    <div class="font-mono text-xs text-green-700">UK_Facebook_Summer24</div>
+                                                    <div class="text-[10px] text-slate-400 mt-1">Reason: Platform name mismatch.</div>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-slate-50">
+                                                <td class="px-4 py-3 text-yellow-600 font-mono text-xs">Fr_TikTok_Vid_Awareness</td>
+                                                <td class="px-4 py-3"><span class="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded text-xs font-bold">P2</span></td>
+                                                <td class="px-4 py-3">
+                                                    <div class="font-mono text-xs text-green-700">FR_TikTok_Video_Awareness</div>
+                                                    <div class="text-[10px] text-slate-400 mt-1">Reason: Case sensitivity (Fr -> FR).</div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="bg-slate-50 p-3 border-t border-slate-200 text-right">
+                                    <button class="bg-blue-600 text-white text-xs px-3 py-1.5 rounded hover:bg-blue-700 transition">Apply All Fixes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategist View -->
+                <div id="view-strategist" class="hidden p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <span class="text-blue-600 font-bold tracking-wide text-sm uppercase">The Value Multiplier</span>
+                            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">Goal-Driven Data Enrichment</h2>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                <strong>Problem:</strong> Customers have data but don't know how to leverage it for strategy (e.g., Bidding).
+                                <br><br>
+                                <strong>Solution:</strong> Users state a goal. The Agent scans a "Use Case Library", suggests enrichments (e.g., "Intent Categories"), and prototypes the result instantly.
+                            </p>
+                            
+                            <!-- Interaction -->
+                            <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 mb-6">
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Select a User Goal:</label>
+                                <select id="goalSelector" onchange="updateStrategistChart()" class="w-full border-slate-300 rounded-md shadow-sm p-2 text-sm focus:ring-blue-500 focus:border-blue-500 border">
+                                    <option value="bidding">Optimize Search Bidding Strategy</option>
+                                    <option value="audience">Refine Audience Segmentation</option>
+                                    <option value="creative">Analyze Creative Performance</option>
+                                </select>
+                                <div id="strategistOutput" class="mt-4 p-3 bg-white border border-blue-100 rounded text-sm text-slate-600">
+                                    <strong class="text-blue-700">Recommendation:</strong> Derive "Search Intent" (Informational vs. Transactional) from Query strings.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Strategist Visualization -->
+                        <div class="flex flex-col items-center justify-center">
+                            <h3 class="font-semibold text-slate-600 mb-4">Projected Value Lift by Use Case</h3>
+                            <div class="chart-container">
+                                <canvas id="strategistChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Ask: Chat to Canvas -->
+        <section class="bg-white border-y border-slate-200 py-16">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-slate-900">The Proposal: "From Chat to Canvas"</h2>
+                    <p class="text-slate-600 max-w-2xl mx-auto mt-2">Currently, these agents live in chat bubbles. To scale to Enterprise needs, we need to evolve the UX.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Current State -->
+                    <div class="border border-slate-200 rounded-lg p-6 bg-slate-50 opacity-75">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-slate-500">Current State (Prototype)</h3>
+                            <span class="text-xs bg-slate-200 px-2 py-1 rounded text-slate-500">Chat Interface</span>
+                        </div>
+                        <div class="space-y-3 font-mono text-xs">
+                            <div class="bg-white p-3 rounded border border-slate-200 shadow-sm w-3/4">User: Fix these errors.</div>
+                            <div class="bg-blue-50 p-3 rounded border border-blue-100 shadow-sm w-3/4 ml-auto">Agent: I found 50 errors. Here is a list...</div>
+                        </div>
+                        <div class="mt-4 text-sm text-red-500 flex items-center gap-2">
+                            <span class="text-lg">⚠</span> Not scalable for 10,000+ rows.
+                        </div>
+                    </div>
+
+                    <!-- Future State -->
+                    <div class="border-2 border-blue-500 rounded-lg p-6 bg-white shadow-xl relative transform md:-translate-y-2">
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-3 py-1 text-xs font-bold rounded-full uppercase tracking-wide">The Ask</div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-slate-900">Future State (Product)</h3>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Integrated Canvas</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Smart Grid UX</h4>
+                                    <p class="text-xs text-slate-600">Bulk-approval workflows for the <span class="text-blue-600">Guardian</span> agent.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Scenario Builder</h4>
+                                    <p class="text-xs text-slate-600">Visual tools for the <span class="text-blue-600">Strategist</span> to demo ROI impact.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Engineering Scale</h4>
+                                    <p class="text-xs text-slate-600">Batch processing pipelines & persistent "Use Case Library".</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validation Section -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <h3 class="text-xl font-bold text-slate-800 mb-6 text-center">Market Validation</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm text-center">
+                    <p class="italic text-slate-600 mb-4">"Taxonomy management is a perennial bottleneck for our global reporting."</p>
+                    <div class="font-bold text-slate-900">— Chanel & Bloomberg</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm text-center">
+                    <p class="italic text-slate-600 mb-4">"We have naming conventions, but our smaller partners struggle to comply."</p>
+                    <div class="font-bold text-slate-900">— Major Agency Client</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg border border-slate-100 shadow-sm text-center">
+                    <p class="italic text-slate-600 mb-4">"Finding 'Latent Context' in our data would be a huge value driver."</p>
+                    <div class="font-bold text-slate-900">— Telcel</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-sm">Proposed by Product Strategy • [Current Date]</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // === State Management ===
+        const state = {
+            currentTab: 'guardian',
+            guardianView: 'before', // 'before' or 'after'
+            strategistGoal: 'bidding'
+        };
+
+        // === Charts instances ===
+        let guardianChartInstance = null;
+        let strategistChartInstance = null;
+
+        // === Data ===
+        const guardianData = {
+            before: [15, 30, 25, 30], // [P0, P1, P2, Compliant]
+            after: [0, 5, 2, 93]      // Drastic improvement
+        };
+
+        const strategistData = {
+            bidding: {
+                label: "Optimization: Search Bidding",
+                data: [90, 40, 85, 60, 50], // [ROI, Efficiency, Speed, Compliance, UX]
+                desc: "Recommendation: Derive 'Search Intent' (Informational vs. Transactional) from Query strings."
+            },
+            audience: {
+                label: "Optimization: Audience Segmentation",
+                data: [60, 80, 50, 70, 90],
+                desc: "Recommendation: Extract 'Product Affinity' from campaign naming patterns."
+            },
+            creative: {
+                label: "Optimization: Creative Analysis",
+                data: [50, 60, 90, 80, 40],
+                desc: "Recommendation: Tag 'Visual Themes' based on ad group taxonomy."
+            }
+        };
+
+        // === Navigation Logic ===
+        function switchTab(tabId) {
+            // Update State
+            state.currentTab = tabId;
+
+            // UI Updates - Tabs
+            ['architect', 'guardian', 'strategist'].forEach(id => {
+                const btn = document.getElementById(`tab-${id}`);
+                if (id === tabId) {
+                    btn.className = "btn-active p-6 rounded-xl border text-left transition-all shadow-md group transform scale-105";
+                } else {
+                    btn.className = "btn-inactive p-6 rounded-xl border text-left transition-all shadow-sm hover:shadow-md group";
+                }
+            });
+
+            // UI Updates - Content Views
+            ['view-architect', 'view-guardian', 'view-strategist'].forEach(id => {
+                const view = document.getElementById(id);
+                if (id === `view-${tabId}`) {
+                    view.classList.remove('hidden');
+                    view.classList.add('block', 'animate-fade-in');
+                } else {
+                    view.classList.add('hidden');
+                    view.classList.remove('block');
+                }
+            });
+
+            // Refresh charts if visible
+            if (tabId === 'guardian') updateGuardianChart(state.guardianView);
+            if (tabId === 'strategist') updateStrategistChart();
+        }
+
+        // === Chart Functions ===
+
+        // 1. Guardian Chart (Bar)
+        function initGuardianChart() {
+            const ctx = document.getElementById('guardianChart').getContext('2d');
+            
+            guardianChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['P0 (Critical)', 'P1 (Major)', 'P2 (Minor)', 'Compliant'],
+                    datasets: [{
+                        label: 'Campaigns %',
+                        data: guardianData.before,
+                        backgroundColor: [
+                            '#ef4444', // Red for P0
+                            '#f97316', // Orange for P1
+                            '#eab308', // Yellow for P2
+                            '#22c55e'  // Green for Compliant
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Data Compliance Health Check (Pre-Audit)' }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, max: 100, title: {display: true, text: '% of Campaigns'} }
+                    }
+                }
+            });
+        }
+
+        function updateGuardianChart(viewState) {
+            state.guardianView = viewState;
+            const newData = viewState === 'before' ? guardianData.before : guardianData.after;
+            const newTitle = viewState === 'before' ? 'Data Compliance Health Check (Pre-Audit)' : 'Data Compliance Health Check (Post-AI Fix)';
+            
+            guardianChartInstance.data.datasets[0].data = newData;
+            guardianChartInstance.options.plugins.title.text = newTitle;
+            guardianChartInstance.update();
+        }
+
+        // 2. Strategist Chart (Radar)
+        function initStrategistChart() {
+            const ctx = document.getElementById('strategistChart').getContext('2d');
+            const initialData = strategistData.bidding;
+
+            strategistChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['ROI Impact', 'Efficiency', 'Speed to Insight', 'Compliance', 'User Experience'],
+                    datasets: [{
+                        label: 'Projected Lift',
+                        data: initialData.data,
+                        fill: true,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgb(59, 130, 246)',
+                        pointBackgroundColor: 'rgb(59, 130, 246)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgb(59, 130, 246)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: false },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateStrategistChart() {
+            const selector = document.getElementById('goalSelector');
+            const selectedGoal = selector.value;
+            const outputText = document.getElementById('strategistOutput');
+            const dataObj = strategistData[selectedGoal];
+
+            // Update Text
+            outputText.innerHTML = `<strong class="text-blue-700">Suggestion:</strong> ${dataObj.desc}`;
+
+            // Update Chart
+            strategistChartInstance.data.datasets[0].data = dataObj.data;
+            strategistChartInstance.update();
+        }
+
+        // === Initialization ===
+        document.addEventListener('DOMContentLoaded', () => {
+            initGuardianChart();
+            initStrategistChart();
+            switchTab('guardian'); // Default view
+        });
+
+    </script>
+</body>
+</html>
